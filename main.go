@@ -20,7 +20,7 @@ func main() {
 	defer Config.DB.Close()
 
 	// run the migrations: todo struct
-	Config.DB.AutoMigrate(&Models.Todo{})
+	Config.DB.AutoMigrate(&Models.Todo{}, &Models.User{})
 
 	// setup routes
 	r := Routes.SetupRouter()
