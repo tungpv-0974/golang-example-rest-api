@@ -33,7 +33,7 @@ func CreateATodo(todo *Todo) (err error) {
 
 // fetch one todo
 func GetATodo(todo *Todo, id string) (err error) {
-	if err := Config.DB.Where("id = ?", id).First(todo).Error; err != nil {
+	if err := Config.DB.Where("title = ?", "abc").First(todo).Error; err != nil {
 		return err
 	}
 	return nil
