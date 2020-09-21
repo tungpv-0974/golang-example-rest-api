@@ -18,7 +18,7 @@ func CreateAUser(c *gin.Context) {
 	}
 }
 
-//	get todo with id
+//	get user by id
 func GetAUser(c *gin.Context) {
 	id := c.Params.ByName("id")
 	var user Models.User
@@ -27,5 +27,15 @@ func GetAUser(c *gin.Context) {
 		c.AbortWithStatus(http.StatusNotFound)
 	} else {
 		c.JSON(http.StatusOK, user)
+	}
+}
+
+func GetAllUser(c *gin.Context)  {
+	var users []Models.User
+	err := Models.GetAllUser(&users)
+	if err != nil {
+		c.AbortWithStatus(http.StatusNotFound)
+	} else {
+		c.JSON(http.StatusOK, users)
 	}
 }

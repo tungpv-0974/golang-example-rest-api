@@ -13,6 +13,7 @@ var err error
 func main() {
 	// Creating a connection to the database
 	Config.DB, err = gorm.Open("mysql", Config.DbURL(Config.BuildDBConfig()))
+
 	if err != nil {
 		fmt.Println("status: ", err)
 	}
@@ -20,7 +21,7 @@ func main() {
 	defer Config.DB.Close()
 
 	// run the migrations: todo struct
-	Config.DB.AutoMigrate(&Models.Todo{}, &Models.User{})
+	Config.DB.AutoMigrate(&Models.Role{}, &Models.Todo{}, &Models.User{})
 
 	// setup routes
 	r := Routes.SetupRouter()
